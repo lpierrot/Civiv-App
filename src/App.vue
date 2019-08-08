@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Election images with stars from Pixabay" src="./assets/election.png">
+  <div class="image" <img src="./assets/election.png" alt="Election images with stars from Pixabay">
     <Home msg="Civic App"/>
+  </div>
   </div>
 </template>
 
@@ -22,9 +23,10 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f0e9e0;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0;
+  
 }
 
 </style>
