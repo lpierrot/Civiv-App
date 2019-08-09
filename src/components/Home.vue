@@ -1,97 +1,133 @@
 <template>
   <div class="home">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group
-        id="input-group-1"
-        label="Email address:"
-        label-for="input-1"
-        description="We'll never share your email with anyone else.">
+    <h2>Rhymesaurus: The Rhyming Thesaurus</h2>
+    
+  <form v-on:submit.prevent="findRepresentative">
+      <p>
+        Find Representative 
+        <input type="text" v-model="zipcode" placeholder="Enter Zipcode"> 
+        <button type="submit">Search</button>
+        
+      </p>
+    </form>
+    <ul class="results" v-if="officials && officials.length > 0">
+      <li class="item" v-for="(item,index) of officials" :key='index'>
+        <p>
+          <strong>{{item.name}}</strong>
+        </p>
+        <p>{{item.party}}</p>
+        <p ><img :src="item.photoUrl" height="100" width="100" :alt="item.name" v-if="item.photoUrl">
+        <span class="no-image" v-if="!item.photoUrl"></span>
+        </p>
+      </li>
+    </ul>
+    <div class="no-results" v-else-if="officials && officials.length==0">
+      <h2>No Words Found</h2>
+      <p>Please adjust your search to find more words.</p>
+    </div>
 
-        <b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          required
-          placeholder="Enter email"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.name"
-          required
-          placeholder="Enter name"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-3" label="Search:" label-for="input-3">
-        <b-form-select
-          id="input-3"
-          v-model="form.search"
-          :options="search"
-          required
-        ></b-form-select>
-      </b-form-group>
-
-      <b-form-group id="input-group-4">
-        <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-          <b-form-checkbox value="me">Check me out</b-form-checkbox>
-          <b-form-checkbox value="that">Check that out</b-form-checkbox>
-        </b-form-checkbox-group>
-      </b-form-group>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
-    </b-form>
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>
+    <ul class="errors" v-if="errors && errors.length > 0">
+      <li v-for='(error,index) of errors' :key='index'>{{error.message}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        form: {
-          email: '',
-          name: '',
-          search: null,
-          checked: []
-        },
-        searchs: [{ text: 'Select One', value: null }, 'Elections', 'Officals', 'Levels'],
-        show: true
-      }
-    },
-    methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
-      onReset(evt) {
-        evt.preventDefault()
-        // Reset our form values
-        this.form.email = ''
-        this.form.name = ''
-        this.form. search = null
-        this.form.checked = []
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
+import axios from "axios";
+export default {
+  name: "Home",
+  data() {
+    return {
+      results: null,
+      errors: [],
+      zipcode: '',
+      officials: []
+    }
+  },
+  methods: {
+    findRepresentative: function() {
+      this.officials = []
+      axios
+        .get("https://www.googleapis.com/civicinfo/v2/representatives", {
+          params: {
+            key: 'AIzaSyC2qhfHJqJDSsQ9B9wjLjN6FtW8-jDeI8k',
+            address: this.zipcode
+          }
         })
-      }
+        .then(response => {
+          this.results = response.data;
+          if (this.results.officials) {
+            this.officials = this.results.officials
+            this.zipcode = ''
+          }
+          console.log ('officials',this.officials)
+        })
+        .catch(error => {
+          this.errors.push(error);
+        });
     }
   }
+};
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.home {
-  margin-right: auto;
-  margin-left: auto;
-  width: 960px;
-  background-color: #f0e9e0;
-  
+.rhymesaurus {
+  font-size: 1.4rem;
+}
+input[type="text"]{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #333;
+  width: 300px;
+  font-size: 1.4rem;
+  color: #2c3e50;
+  font-weight: 300;
+  background: rgba(0,0,0,0.02);
+  padding: 0.5rem;
+}
+button{
+  background: #333;
+  padding: 0.5rem;
+  font-weight: 300;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+h1, h2 {
+  font-weight: normal;
+}
+ul.results {
+  list-style-type: none;
+  padding: 0;
+}
+.results li {
+  display: inline-block;
+  margin: 10px;
+  border: solid 1px #333;
+  padding: 0.5rem;
+  width: 200px;
+  min-height: 100px;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+}
+ul.errors {
+  list-style-type: none;
+}
+.errors li {
+  border: 1px solid red;
+  color: red;
+  padding: 0.5rem;
+  margin: 10px 0;
+}
+a {
+  color: #42b983;
+}
+.no-image {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
 }
 </style>

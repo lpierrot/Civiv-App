@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <div class="image" <img src="./assets/election.png" alt="Election images with stars from Pixabay">
+  <div class="image" <img src="./assets/election.png" alt="Election images with stars credit to Pixabay">
     <Home msg="Civic App"/>
   </div>
   </div>
