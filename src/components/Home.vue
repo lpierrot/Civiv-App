@@ -1,13 +1,12 @@
 <template>
   <div class="home">
-    <h2>Rhymesaurus: The Rhyming Thesaurus</h2>
+    <h2>Civic App</h2>
     
   <form v-on:submit.prevent="findRepresentative">
       <p>
         Find Representative 
         <input type="text" v-model="zipcode" placeholder="Enter Zipcode"> 
         <button type="submit">Search</button>
-        
       </p>
     </form>
     <ul class="results" v-if="officials && officials.length > 0">
@@ -22,10 +21,9 @@
       </li>
     </ul>
     <div class="no-results" v-else-if="officials && officials.length==0">
-      <h2>No Words Found</h2>
-      <p>Please adjust your search to find more words.</p>
     </div>
-
+    <!-- <h2>No results</h2>
+    <p>Please adjust your search.</p> -->
     <ul class="errors" v-if="errors && errors.length > 0">
       <li v-for='(error,index) of errors' :key='index'>{{error.message}}</li>
     </ul>

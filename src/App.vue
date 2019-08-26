@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <div class="image" <img src="./assets/election.png" alt="Election images with stars credit to Pixabay">
+  <div class="intro">
     <Home msg="Civic App"/>
   </div>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 import Home from './components/Home.vue'
-import Results from './components/Results.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'app',
@@ -27,6 +27,10 @@ export default {
   text-align: center;
   margin-top: 0;
   
+}
+.intro {
+  height: 100vh;
+  padding-top: 250px;
 }
 
 </style>
