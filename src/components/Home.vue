@@ -9,6 +9,7 @@
         <button type="submit">Search</button>
       </p>
     </form>
+    
     <ul class="results" v-if="officials && officials.length > 0">
       <li class="item" v-for="(item,index) of officials" :key='index'>
         <p>
