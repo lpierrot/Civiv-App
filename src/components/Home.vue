@@ -15,9 +15,10 @@
           <strong>{{item.name}}</strong>
         </p>
         <p>{{item.party}}</p>
-        <p ><img :src="item.photoUrl" height="100" width="100" :alt="item.name" v-if="item.photoUrl">
-        <span class="no-image" v-if="!item.photoUrl"></span>
+        <p v-if="item.photoUrl && item.photoUrl.indexOf('https') >-1">
+          <img :src="item.photoUrl" height="100" width="100" :alt="item.name">
         </p>
+        <p v-else><i class="icon far fa-surprise"></i></p>
       </li>
     </ul>
     <div class="no-results" v-else-if="officials && officials.length==0">
@@ -127,5 +128,8 @@ a {
   display: inline-block;
   height: 100px;
   width: 100px;
+}
+.icon {
+  font-size: 5rem;
 }
 </style>
