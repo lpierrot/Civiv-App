@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h2>Civic App</h2>
-    
+    <p><router-link to="/About">About</router-link></p>
   <form v-on:submit.prevent="findRepresentative">
       <p>
         Find Representative 

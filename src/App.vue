@@ -1,20 +1,19 @@
 <template>
   <div id="app">
   <div class="intro">
-    <Home msg="Civic App"/>
+
+      <!-- <p><router-link to="/About">About</router-link></p> -->
+    <router-view/>
+  
   </div>
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
-import Footer from './components/Footer.vue'
+
 
 export default {
   name: 'app',
-  components: {
-    Home
-  }
 }
 </script>
 
