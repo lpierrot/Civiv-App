@@ -1,7 +1,10 @@
 <template>
+
   <div>
-      <p><router-link to="/">Home</router-link></p>
-    <p>Hello</p>
+      <div class="about">
+          <h1>About</h1>
+          <p>This tool is designed to help you find federal, state, and local officials.</p>
+      </div>
   </div>
 </template>
 <script>

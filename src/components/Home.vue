@@ -1,34 +1,23 @@
 <template>
+
   <div class="home">
-    <h2>Civic App</h2>
-    <p><router-link to="/About">About</router-link></p>
+    <div class="header">
+      <h1>Civic App</h1>
+      <br>
+      <p>This tool is designed to help you find elected officials by using your zipcode. Also note
+        that the data displayed might noy be accurate. I am using Google API. 
+      </p>
+      <br>
+      <br>
+    </div>
   <form v-on:submit.prevent="findRepresentative">
       <p>
         Find Representative 
-        <input type="text" v-model="zipcode" placeholder="Enter Zipcode"> 
+        <input type="text" v-model="zipcode" placeholder="Enter zipcode"> 
         <button type="submit">Search</button>
       </p>
     </form>
-    
-    <ul class="results" v-if="officials && officials.length > 0">
-      <li class="item" v-for="(item,index) of officials" :key='index'>
-        <p>
-          <strong>{{item.name}}</strong>
-        </p>
-        <p>{{item.party}}</p>
-        <p v-if="item.photoUrl && item.photoUrl.indexOf('https') >-1">
-          <img :src="item.photoUrl" height="100" width="100" :alt="item.name">
-        </p>
-        <p v-else><i class="icon far fa-surprise"></i></p>
-      </li>
-    </ul>
-    <div class="no-results" v-else-if="officials && officials.length==0">
-    </div>
-    <!-- <h2>No results</h2>
-    <p>Please adjust your search.</p> -->
-    <ul class="errors" v-if="errors && errors.length > 0">
-      <li v-for='(error,index) of errors' :key='index'>{{error.message}}</li>
-    </ul>
+
   </div>
 </template>
 
@@ -72,8 +61,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rhymesaurus {
-  font-size: 1.4rem;
+.home {
+  font-size: 1.2rem;
 }
 input[type="text"]{
   border-top: none;

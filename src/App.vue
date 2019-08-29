@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-  <div class="intro">
-
-      <!-- <p><router-link to="/About">About</router-link></p> -->
-    <router-view/>
-  
-  </div>
+  <NavBar/>
+  <router-view/>
   </div>
 </template>
 
 <script>
-
+import NavBar from '@/components/NavBar.vue'
 
 export default {
   name: 'app',
+  components: {
+    'NavBar': NavBar
+  }
 }
 </script>
 
@@ -22,14 +21,10 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0e9e0;
   text-align: center;
   margin-top: 0;
+  background-color: #eeeeee;
   
-}
-.intro {
-  height: 100vh;
-  padding-top: 250px;
 }
 
 </style>
