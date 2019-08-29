@@ -2,10 +2,9 @@
 
   <div class="home">
     <div class="header">
-      <h1>Civic App</h1>
+      <h1></h1>
       <br>
-      <p>This tool is designed to help you find elected officials by using your zipcode. Also note
-        that the data displayed might noy be accurate. I am using Google API. 
+      <p>This tool is designed to help you find elected officials by zipcode. Currently in production.
       </p>
       <br>
       <br>
@@ -22,6 +21,7 @@
 </template>
 
 <script>
+import {API} from '@/common/api';
 import axios from "axios";
 export default {
   name: "Home",
@@ -34,6 +34,13 @@ export default {
     }
   },
   methods: {
+    // findRepresentative: function () {
+    //   API.get('', {
+    //     params: {
+    //         address: this.zipcode
+    //     }
+    //   })
+
     findRepresentative: function() {
       this.officials = []
       axios
@@ -63,6 +70,8 @@ export default {
 <style scoped>
 .home {
   font-size: 1.2rem;
+  height: 100vh;
+  padding-top: 60px;
 }
 input[type="text"]{
   border-top: none;
@@ -70,20 +79,20 @@ input[type="text"]{
   border-right: none;
   border-bottom: 1px solid #333;
   width: 300px;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #2c3e50;
-  font-weight: 300;
+  font-weight: 100px;
   background: rgba(0,0,0,0.02);
   padding: 0.5rem;
 }
 button{
   background: #333;
   padding: 0.5rem;
-  font-weight: 300;
+  font-weight: 300px;
   color: #fff;
   border: none;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 h1, h2 {
   font-weight: normal;

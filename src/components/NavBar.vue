@@ -1,6 +1,6 @@
 <template>
   <div id="nav" class="nav">
-      <router-link to="/" class="brand">Lionel Pierrot</router-link>
+      <router-link to="/" class="brand">Civic App</router-link>
     <nav>
       <router-link to="/">Home</router-link>|
       <router-link to="/About">About</router-link>
@@ -17,6 +17,7 @@ export default {};
       align-items: center;
       background-color: #009688;
       height: 60px;
+      margin: 10px 10px 15px 10px;
     }
     .nav > .brand {
       font-family: 'Montserrat', sans-serif;

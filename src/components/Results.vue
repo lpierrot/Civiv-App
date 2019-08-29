@@ -27,16 +27,47 @@
 </template>
 <script>
 import Home from "@/components/Home";
+import {API} from '@/common/api';
+import axios from "axios";
 export default {
-  name: "Results",
-  components: {
-    home: Home
-  },
+  name: "Home",
   data() {
-    return {};
+    return {
+      results: null,
+      errors: [],
+      zipcode: '',
+      officials: []
+    }
   },
-  props: {
-    officials: {}
+  methods: {
+    // findRepresentative: function () {
+    //   API.get('', {
+    //     params: {
+    //         address: this.zipcode
+    //     }
+    //   })
+
+    findRepresentative: function() {
+      this.officials = []
+      axios
+        .get("https://www.googleapis.com/civicinfo/v2/representatives", {
+          params: {
+            key: 'AIzaSyC2qhfHJqJDSsQ9B9wjLjN6FtW8-jDeI8k',
+            address: this.zipcode
+          }
+        })
+        .then(response => {
+          this.results = response.data;
+          if (this.results.officials) {
+            this.officials = this.results.officials
+            this.zipcode = ''
+          }
+          console.log ('officials',this.officials)
+        })
+        .catch(error => {
+          this.errors.push(error);
+        });
+    }
   }
 };
 </script>
