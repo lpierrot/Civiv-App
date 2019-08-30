@@ -21,9 +21,9 @@ export default {
   name: "Home",
   data() {
     return {
-      errors: [],
+      errors: null,
       zipcode: '',
-      officials: []
+      officials: null
     }
   },
 components: {
@@ -31,21 +31,13 @@ components: {
 },
   methods: {
     findRepresentative: function () {
+      if (this.zipcode.length === 0)
+      return 
       API.get('', {
         params: {
             address: this.zipcode
         }
       })
-
-    // findRepresentative: function() {
-    //   this.officials = []
-    //   axios
-    //     .get("", {
-    //       params: {
-    //         key: 'AIzaSyC2qhfHJqJDSsQ9B9wjLjN6FtW8-jDeI8k',
-    //         address: this.zipcode
-    //       }
-    //     })
         .then(response => {
           this.results = response.data;
           if (this.results.officials) {
@@ -55,7 +47,10 @@ components: {
           console.log ('officials',this.officials)
         })
         .catch(error => {
-          this.errors.push(error);
+          if (!this.errors) {
+            this.errors=[]
+          } 
+          this.errors.push(error.message);
         });
     }
   }

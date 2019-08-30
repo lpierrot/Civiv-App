@@ -20,6 +20,7 @@
 
     <div class="no-results" v-else-if="officials && officials.length==0">
       <b>No results found, Please adjust your search.</b>
+      {{errors}}
       <ul class="errors" v-if="errors && errors.length > 0">
         <li v-for="(error,index) of errors" :key="index">{{error.message}}</li>
       </ul>
