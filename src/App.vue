@@ -1,6 +1,10 @@
 <template>
   <div id="app">
   <NavBar/>
+  <div class="header">
+      <p>This tool is designed to help you find elected officials by zipcode. Currently in production.
+      </p>
+    </div>
   <router-view/>
   </div>
 </template>

@@ -1,13 +1,14 @@
 <template>
   <div class="results">
+    <!-- {{officials}} -->
     <ul class="results" v-if="officials && officials.length > 0">
       <li class="item" v-for="(item,index) of officials" :key="index">
         <p>
           <strong>{{item.name}}</strong>
         </p>
-        <!-- <p>{{item.address}}</p>
-        <p>{{item.phones}}</p> -->
         <p>{{item.party}}</p>
+        <phones :phones="item.phones" />
+        <urls :urls="item.urls" />
         <p v-if="item.photoUrl && item.photoUrl.indexOf('https') >-1">
           <img :src="item.photoUrl" height="100" width="100" :alt="item.name" />
         </p>
@@ -26,48 +27,22 @@
   </div>
 </template>
 <script>
-import Home from "@/components/Home";
-import {API} from '@/common/api';
-import axios from "axios";
+import Phones from '@/components/Phones'
+import Urls from '@/components/Urls'
 export default {
-  name: "Home",
+  name: "Results",
+  props: {
+    officials: Array,
+    errors: Array
+  },
+  components: {
+  'phones': Phones,
+  'urls': Urls
+},
   data() {
     return {
-      results: null,
-      errors: [],
-      zipcode: '',
-      officials: []
-    }
-  },
-  methods: {
-    // findRepresentative: function () {
-    //   API.get('', {
-    //     params: {
-    //         address: this.zipcode
-    //     }
-    //   })
-
-    findRepresentative: function() {
-      this.officials = []
-      axios
-        .get("https://www.googleapis.com/civicinfo/v2/representatives", {
-          params: {
-            key: 'AIzaSyC2qhfHJqJDSsQ9B9wjLjN6FtW8-jDeI8k',
-            address: this.zipcode
-          }
-        })
-        .then(response => {
-          this.results = response.data;
-          if (this.results.officials) {
-            this.officials = this.results.officials
-            this.zipcode = ''
-          }
-          console.log ('officials',this.officials)
-        })
-        .catch(error => {
-          this.errors.push(error);
-        });
-    }
+      
+    };
   }
 };
 </script>

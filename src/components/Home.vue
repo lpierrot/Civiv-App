@@ -1,14 +1,6 @@
 <template>
 
   <div class="home">
-    <div class="header">
-      <h1></h1>
-      <br>
-      <p>This tool is designed to help you find elected officials by zipcode. Currently in production.
-      </p>
-      <br>
-      <br>
-    </div>
   <form v-on:submit.prevent="findRepresentative">
       <p>
         Find Representative 
@@ -16,40 +8,44 @@
         <button type="submit">Search</button>
       </p>
     </form>
-
+    <results :officials="officials" :errors="errors"/>
+    
   </div>
 </template>
 
 <script>
 import {API} from '@/common/api';
 import axios from "axios";
+import Results from '@/components/Results'
 export default {
   name: "Home",
   data() {
     return {
-      results: null,
       errors: [],
       zipcode: '',
       officials: []
     }
   },
+components: {
+  'results': Results
+},
   methods: {
-    // findRepresentative: function () {
-    //   API.get('', {
-    //     params: {
-    //         address: this.zipcode
-    //     }
-    //   })
-
-    findRepresentative: function() {
-      this.officials = []
-      axios
-        .get("https://www.googleapis.com/civicinfo/v2/representatives", {
-          params: {
-            key: 'AIzaSyC2qhfHJqJDSsQ9B9wjLjN6FtW8-jDeI8k',
+    findRepresentative: function () {
+      API.get('', {
+        params: {
             address: this.zipcode
-          }
-        })
+        }
+      })
+
+    // findRepresentative: function() {
+    //   this.officials = []
+    //   axios
+    //     .get("", {
+    //       params: {
+    //         key: 'AIzaSyC2qhfHJqJDSsQ9B9wjLjN6FtW8-jDeI8k',
+    //         address: this.zipcode
+    //       }
+    //     })
         .then(response => {
           this.results = response.data;
           if (this.results.officials) {
@@ -70,7 +66,6 @@ export default {
 <style scoped>
 .home {
   font-size: 1.2rem;
-  height: 100vh;
   padding-top: 60px;
 }
 input[type="text"]{
