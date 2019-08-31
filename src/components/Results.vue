@@ -10,7 +10,7 @@
         <phones :phones="item.phones" />
         <urls :urls="item.urls" />
         <p v-if="item.photoUrl && item.photoUrl.indexOf('https') >-1">
-          <img :src="item.photoUrl" height="100" width="100" :alt="item.name" />
+          <img :src="item.photoUrl" height="150" width="150" :alt="item.name" />
         </p>
         <p v-else>
           <i class="icon far fa-surprise"></i>
@@ -50,5 +50,35 @@ export default {
 
 
 <style scoped>
+.results {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 20px;
+  background-color: #eeeeee;
+}
+ul.results {
+  list-style-type: none;
+  padding: 0;
+}
+.results li {
+  display: inline-block;
+  margin: 10px;
+  border: solid 1px #333;
+  padding: 0;
+  width: 250px;
+  min-height: 200px;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+}
+/* .photo {
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+} */
+.icon {
+  font-size: 4rem;
+  padding-top: 23px;
+  padding-bottom: 64px;
+}
 </style>>
 

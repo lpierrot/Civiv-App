@@ -1,15 +1,20 @@
 <template>
 
   <div class="home">
+  <div class="header">
+      <p>This tool is designed to help you find elected officials by zipcode. Currently in production.
+      </p>
+  </div>
+  <div class="formbox">
   <form v-on:submit.prevent="findRepresentative">
       <p>
         Find Representative 
         <input type="text" v-model="zipcode" placeholder="Enter zipcode"> 
         <button type="submit">Search</button>
       </p>
-    </form>
-    <results :officials="officials" :errors="errors"/>
-    
+  </form>
+  </div>
+  <results :officials="officials" :errors="errors"/>
   </div>
 </template>
 
@@ -61,7 +66,13 @@ components: {
 <style scoped>
 .home {
   font-size: 1.2rem;
+  
+}
+.header {
   padding-top: 60px;
+}
+.formbox {
+  padding-top: 100px;
 }
 input[type="text"]{
   border-top: none;
@@ -83,42 +94,5 @@ button{
   border: none;
   cursor: pointer;
   font-size: 1rem;
-}
-h1, h2 {
-  font-weight: normal;
-}
-ul.results {
-  list-style-type: none;
-  padding: 0;
-}
-.results li {
-  display: inline-block;
-  margin: 10px;
-  border: solid 1px #333;
-  padding: 0.5rem;
-  width: 200px;
-  min-height: 100px;
-  color: #fff;
-  background: rgba(0,0,0,0.7);
-}
-ul.errors {
-  list-style-type: none;
-}
-.errors li {
-  border: 1px solid red;
-  color: red;
-  padding: 0.5rem;
-  margin: 10px 0;
-}
-a {
-  color: #42b983;
-}
-.no-image {
-  display: inline-block;
-  height: 100px;
-  width: 100px;
-}
-.icon {
-  font-size: 5rem;
 }
 </style>

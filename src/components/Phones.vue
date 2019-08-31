@@ -28,5 +28,12 @@ export default {
 
 
 <style scoped>
+ul.results {
+  list-style-type: none;
+  padding: 0;
+}
+.results li {
+  list-style-type: none;
+}
 </style>>
 

@@ -1,8 +1,7 @@
 <template>
-
   <div>
       <div class="about">
-          <h1>About</h1>
+          <h3>About</h3>
           <p>This app is designed to help you find federal, state, and local elected officials.</p>
       </div>
   </div>
@@ -25,15 +24,12 @@
 <style scoped>
 .about {
     padding-top: 60px;
-    height: 100vh;
-    
+    background-color: #eeeeee;
+    font-size: 1.2rem;
 }
 h1 {
   font-weight: normal;
   font-size: 30px;
-}
-p {
-  font-size: 1.2rem;
 }
 
 </style>
