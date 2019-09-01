@@ -8,18 +8,6 @@
 </template>
 <script>
 
-// export default {
-//   name: "Footerpage",
-//   data() {
-//     return {
-//       footerText: "Copyright &copy; Lionel Pierrot 2019"
-//     };
-//   },
-//  created: function () {
-//     console.log('Hello')
-//   }
-
-// };
 </script>
 <style scoped>
 .about {

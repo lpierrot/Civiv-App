@@ -50,6 +50,7 @@ export default {
 
 
 <style scoped>
+
 .results {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-auto-rows: minmax(150px, auto);
@@ -58,23 +59,19 @@ export default {
 }
 ul.results {
   list-style-type: none;
-  padding: 0;
+  padding: 65px;
 }
 .results li {
   display: inline-block;
   margin: 10px;
   border: solid 1px #333;
-  padding: 0;
+  padding: 15px;
   width: 250px;
   min-height: 200px;
   color: #fff;
   background: rgba(0,0,0,0.7);
 }
-/* .photo {
-  display: inline-block;
-  height: 150px;
-  width: 150px;
-} */
+
 .icon {
   font-size: 4rem;
   padding-top: 23px;

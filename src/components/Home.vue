@@ -6,12 +6,10 @@
       </p>
   </div>
   <div class="formbox">
+    <p>Please enter your zipcode</p>
   <form v-on:submit.prevent="findRepresentative">
-      <p>
-        Find Representative 
         <input type="text" v-model="zipcode" placeholder="Enter zipcode"> 
         <button type="submit">Search</button>
-      </p>
   </form>
   </div>
   <results :officials="officials" :errors="errors"/>
