@@ -18,7 +18,7 @@ import NavBar from '@/components/NavBar.vue'
 export default {
   name: 'app',
   components: {
-    'NavBar': NavBar
+    'NavBar': NavBar,
   }
 }
 </script>
@@ -33,11 +33,9 @@ export default {
 }
 html {
   background-color: #eeeeee;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
   scroll-behavior: smooth;
+  /* scroll-behavior: auto; */
+  
 }
 @media (prefers-reduced-motion: reduce) {
   html {

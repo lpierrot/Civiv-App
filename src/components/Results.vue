@@ -1,6 +1,5 @@
 <template>
   <div class="results">
-    <!-- {{officials}} -->
     <ul class="results" v-if="officials && officials.length > 0">
       <li class="item" v-for="(item,index) of officials" :key="index">
         <p>
@@ -17,7 +16,6 @@
         </p>
       </li>
     </ul>
-
     <div class="no-results" v-else-if="officials && officials.length==0">
       <b>No results found, Please adjust your search.</b>
       {{errors}}
@@ -51,25 +49,19 @@ export default {
 
 <style scoped>
 
-.results {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows: minmax(150px, auto);
-  grid-gap: 20px;
-  background-color: #eeeeee;
-}
 ul.results {
   list-style-type: none;
-  padding: 65px;
+  padding: 60px;
 }
 .results li {
   display: inline-block;
   margin: 10px;
-  border: solid 1px #333;
+  border-radius: 30px;
   padding: 15px;
   width: 250px;
   min-height: 200px;
-  color: #fff;
-  background: rgba(0,0,0,0.7);
+  color: #000000;
+  background: rgba(7, 7, 7, 0.137);
 }
 
 .icon {

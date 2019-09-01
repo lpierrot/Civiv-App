@@ -11,7 +11,7 @@
 </script>
 <style scoped>
 .about {
-    padding-top: 60px;
+    padding-top: 50px;
     background-color: #eeeeee;
     font-size: 1.2rem;
 }

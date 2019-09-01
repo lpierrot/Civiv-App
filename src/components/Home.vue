@@ -6,7 +6,7 @@
       </p>
   </div>
   <div class="formbox">
-    <p>Please enter your zipcode</p>
+    <strong>Please enter your zipcode</strong>
   <form v-on:submit.prevent="findRepresentative">
         <input type="text" v-model="zipcode" placeholder="Enter zipcode"> 
         <button type="submit">Search</button>
@@ -64,7 +64,6 @@ components: {
 <style scoped>
 .home {
   font-size: 1.2rem;
-  
 }
 .header {
   padding-top: 60px;
@@ -81,7 +80,7 @@ input[type="text"]{
   font-size: 1rem;
   color: #2c3e50;
   font-weight: 100px;
-  background: rgba(0,0,0,0.02);
+  background: rgba(14, 1, 1, 0.075);
   padding: 0.5rem;
 }
 button{
