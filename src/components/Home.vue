@@ -2,17 +2,17 @@
   <div class="home">
     <div class="header float">
       <p>
-        Enter your zipcode to find and contact your federal, state, and local elected representatives.
-        Please also note that the data from the
-        <a
-          href="https://developers.google.com/civic-information/"
-          target="_blank"
-        >Google Civic Information API</a>,may not have
-        100% coverage of all representatives. I have also replaced pictures some images with icons, since the source of these pictures
+        Enter your zipcode to find and contact your federal, state, and local representatives.
+        I have replaced pictures with icons, since the source of these pictures
         <a
           href="http://bioguide.congress.gov/biosearch/biosearch.asp"
           target="_blank"
-        >Congressional Bioguide Directory</a>is not HTTPS encrypted.
+        >Congressional Bioguide Directory</a> website is not HTTPS encrypted. Data from the
+        <a
+          href="https://developers.google.com/civic-information/"
+          target="_blank"
+        >Google Civic Information API</a>,<i>may not have
+        100% coverageof all representatives</i> .
       </p>
     </div>
     <div class="formbox">
